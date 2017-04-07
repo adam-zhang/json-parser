@@ -281,17 +281,8 @@ void json_value_free_ex (json_settings * settings,
 /*
 this library needs a function to find value
 */
-json_value* find_value(json_value* value, const char* key)
-{
-	if (value->type != json_object)
-		return NULL;
-	for(int i = 0; i < value->u.object.length; ++i)
-	{
-		if (strcmp(value->u.object.values[i].name, key) == 0)
-			return value->u.object.values[i].value;
-	}
-	return NULL;
-}
+json_value* find_value(json_value* value, const char* key);
+
 #endif
 
 
