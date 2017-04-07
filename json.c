@@ -1009,3 +1009,15 @@ void json_value_free (json_value * value)
    json_value_free_ex (&settings, value);
 }
 
+json_value* find_value(json_value* value, const char* key)
+{
+	if (value->type != json_object)
+		return NULL;
+	for(int i = 0; i < value->u.object.length; ++i)
+	{
+		if (strcmp(value->u.object.values[i].name, key) == 0)
+			return value->u.object.values[i].value;
+	}
+	return NULL;
+}
+
